@@ -59,6 +59,14 @@ pipeline {
                         sh "docker rmi angelsuarez1612/icdjango:latest"
                     }
                 }
+                stage ('Conexión SSH') {
+                    steps{
+                        sshagent(credentials : ['SSH_VPS']) {
+                            sh 'ssh -o StrictHostKeyChecking=no angelsuarez@zeus.suarezp.com uptime'
+                            sh 'ssh -o StrictHostKeyChecking=no angelsuarez@zeus.suarezp.com docker-compose up -d --force-recreate'
+                        }
+                    }
+                }
             }
         }           
     }
