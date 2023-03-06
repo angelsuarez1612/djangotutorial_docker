@@ -62,7 +62,7 @@ pipeline {
                 stage ('Conexión SSH') {
                     steps{
                         sshagent(credentials : ['SSH_VPS']) {
-                            sh 'ssh -o StrictHostKeyChecking=no angelsuarez@zeus.suarezp.com sudo docker rmi -f angelsuarez1612/icdjango'
+                            sh 'ssh -o StrictHostKeyChecking=no angelsuarez@zeus.suarezp.com docker rmi -f angelsuarez1612/icdjango'
                             sh 'ssh -o StrictHostKeyChecking=no angelsuarez@zeus.suarezp.com wget https://raw.githubusercontent.com/angelsuarez1612/djangotutorial_docker/main/docker-compose.yaml -O docker-compose.yaml'
                             sh 'ssh -o StrictHostKeyChecking=no angelsuarez@zeus.suarezp.com docker-compose up -d --force-recreate'
                         }
