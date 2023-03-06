@@ -31,4 +31,4 @@ services:
       - volume_mariadb_ic:/var/lib/mysql
 
 volumes:
-    volume_mariadb:
+    volume_mariadb_ic:
